@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -19,7 +20,10 @@ public class ChatRoom extends JFrame {
 	private JTextField textField_IP;
 	private JTextField textField_PORT;
 	private JTextField textField_room_name;
-
+	private JTextPane textPane_online_users;
+	private JTextPane textPane_message;
+	private JScrollPane jsp_online_user;
+	private JScrollPane jsp_message;
 	/**
 	 * Launch the application.
 	 */
@@ -75,27 +79,29 @@ public class ChatRoom extends JFrame {
 		textField_PORT.setBounds(106, 131, 140, 24);
 		contentPane.add(textField_PORT);
 		
-		JButton btnNewButton = new JButton("创建聊天室");
-		btnNewButton.setBounds(23, 190, 110, 35);
-		contentPane.add(btnNewButton);
+		JButton button_create_room = new JButton("创建聊天室");
+		button_create_room.setBounds(23, 190, 110, 35);
+		contentPane.add(button_create_room);
 		
 		JLabel label = new JLabel("聊天室动态");
 		label.setFont(new Font("黑体", Font.PLAIN, 17));
 		label.setBounds(362, 18, 103, 33);
 		contentPane.add(label);
 		
-		JTextPane textPane_message = new JTextPane();
-		textPane_message.setBounds(361, 55, 290, 436);
-		contentPane.add(textPane_message);
+		textPane_message = new JTextPane();
+		jsp_message=new JScrollPane(textPane_message);
+		jsp_message.setBounds(361, 55, 290, 436);
+		contentPane.add(jsp_message);
 		
 		JLabel label_1 = new JLabel("当前在线用户");
 		label_1.setFont(new Font("黑体", Font.PLAIN, 17));
 		label_1.setBounds(23, 240, 121, 33);
 		contentPane.add(label_1);
 		
-		JTextPane textPane_online_users = new JTextPane();
-		textPane_online_users.setBounds(23, 280, 290, 212);
-		contentPane.add(textPane_online_users);
+		textPane_online_users = new JTextPane();
+		jsp_online_user=new JScrollPane(textPane_online_users);
+		jsp_online_user.setBounds(23, 280, 290, 212);
+		contentPane.add(jsp_online_user);
 		
 		JLabel label_2 = new JLabel("聊天室名：");
 		label_2.setVerticalAlignment(SwingConstants.BOTTOM);
