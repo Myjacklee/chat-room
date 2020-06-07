@@ -7,8 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
-
-
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -83,6 +83,7 @@ public class ChatRoom extends JFrame {
 		
 		listModel = new DefaultListModel();
 		userList=new JList(listModel);
+		userList.setFont(new Font("华文楷体", Font.PLAIN, 20));
 		userList.setLocation(27, 0);
 		
 		JLabel lblIp = new JLabel("参数配置");
@@ -98,7 +99,6 @@ public class ChatRoom extends JFrame {
 		
 		textField_PORT = new JTextField();
 		textField_PORT.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_PORT.setText("1024");
 		textField_PORT.setColumns(10);
 		textField_PORT.setBounds(81, 47, 73, 33);
 		contentPane.add(textField_PORT);
@@ -143,10 +143,33 @@ public class ChatRoom extends JFrame {
 		contentPane.add(label);
 		
 		textPane_message = new JTextArea();
+		textPane_message.setLineWrap(true);
+		textPane_message.setFont(new Font("华文楷体", Font.PLAIN, 20));
 		jsp_message=new JScrollPane(textPane_message);
 		jsp_message.setBounds(283, 55, 368, 275);
 		contentPane.add(jsp_message);
 		textPane_message.setEditable(false);
+		textPane_message.getDocument().addDocumentListener(new DocumentListener() {
+			
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				int length=textPane_message.getText().length();
+				textPane_message.setCaretPosition(length);
+			}
+			
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		JLabel label_1 = new JLabel("当前在线用户");
 		label_1.setFont(new Font("黑体", Font.PLAIN, 17));
@@ -164,6 +187,8 @@ public class ChatRoom extends JFrame {
 		
 	
 		textArea_send_message = new JTextArea();
+		textArea_send_message.setLineWrap(true);
+		textArea_send_message.setFont(new Font("华文楷体", Font.PLAIN, 20));
 		jsp_send_message=new JScrollPane(textArea_send_message);
 		jsp_send_message.setBounds(283, 363, 368, 95);
 		contentPane.add(jsp_send_message);

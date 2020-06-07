@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
-
-
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -92,6 +92,7 @@ public class ChatRoomClient extends JFrame {
 		
 		listModel=new DefaultListModel();
 		userList=new JList(listModel);
+		userList.setFont(new Font("华文楷体", Font.PLAIN, 20));
 		JLabel lblNewLabel = new JLabel("聊天室配置");
 		lblNewLabel.setFont(new Font("黑体", Font.PLAIN, 17));
 		lblNewLabel.setBounds(31, 14, 91, 31);
@@ -108,13 +109,13 @@ public class ChatRoomClient extends JFrame {
 		contentPane.add(lblPort);
 		
 		textField_IP = new JTextField("127.0.0.1");
-		textField_IP.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textField_IP.setFont(new Font("华文楷体", Font.PLAIN, 20));
 		textField_IP.setBounds(84, 44, 175, 33);
 		contentPane.add(textField_IP);
 		textField_IP.setColumns(10);
 		
 		textField_PORT = new JTextField();
-		textField_PORT.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textField_PORT.setFont(new Font("华文楷体", Font.PLAIN, 20));
 		textField_PORT.setColumns(10);
 		textField_PORT.setBounds(84, 83, 175, 33);
 		contentPane.add(textField_PORT);
@@ -125,7 +126,7 @@ public class ChatRoomClient extends JFrame {
 		contentPane.add(label);
 		
 		textField_nickname = new JTextField();
-		textField_nickname.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textField_nickname.setFont(new Font("华文楷体", Font.PLAIN, 20));
 		textField_nickname.setColumns(10);
 		textField_nickname.setBounds(84, 123, 175, 33);
 		contentPane.add(textField_nickname);
@@ -187,12 +188,37 @@ public class ChatRoomClient extends JFrame {
 		contentPane.add(label_2);
 		
 		textPane_get_message = new JTextArea();
+		textPane_get_message.setLineWrap(true);
+		textPane_get_message.setFont(new Font("华文楷体", Font.PLAIN, 20));
 		textPane_get_message.setEditable(false);
 		jsp_get_message=new JScrollPane(textPane_get_message);
 		jsp_get_message.setBounds(277, 44, 366,261);
 		contentPane.add(jsp_get_message);
+		textPane_get_message.getDocument().addDocumentListener(new DocumentListener() {
+			
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				int length=textPane_get_message.getText().length();
+				textPane_get_message.setCaretPosition(length);
+			}
+			
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		textPane_send_message=new JTextArea();
+		textPane_send_message.setLineWrap(true);
+		textPane_send_message.setFont(new Font("华文楷体", Font.PLAIN, 20));
 		jsp_send_message=new JScrollPane(textPane_send_message);
 		jsp_send_message.setBounds(277, 342, 366, 108);
 		contentPane.add(jsp_send_message);
