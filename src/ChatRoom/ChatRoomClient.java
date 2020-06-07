@@ -15,6 +15,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -80,8 +81,10 @@ public class ChatRoomClient extends JFrame {
 	 * Create the frame.
 	 */
 	public ChatRoomClient() {
-		setTitle("聊天室客户端");
+		setResizable(false);
+		setTitle("聊天室 客户端");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().createImage(this.getClass().getResource("../icon/OO.png")));
 		setBounds(100, 100, 691, 559);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -305,6 +308,7 @@ public class ChatRoomClient extends JFrame {
 				socket.close();
 			}
 			isConnected=false;
+			
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -358,6 +362,12 @@ public class ChatRoomClient extends JFrame {
 			if(socket!=null){
 				socket.close();
 			}
+			button_close.setEnabled(false);
+			button_join_logout.setEnabled(true);
+			button_send_message.setEnabled(false);
+			textField_IP.setEditable(true);
+			textField_nickname.setEditable(true);
+			textField_PORT.setEditable(true);
 			isConnected=false;
 		}
 		public void run(){

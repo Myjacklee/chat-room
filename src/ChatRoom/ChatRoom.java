@@ -14,6 +14,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -73,8 +74,11 @@ public class ChatRoom extends JFrame {
 	 * Create the frame.
 	 */
 	public ChatRoom() {
-		setTitle("聊天室 服务器端");
+		setResizable(false);
+		setTitle("OO聊天室 服务器端");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(Toolkit.getDefaultToolkit().createImage(this.getClass().getResource("../icon/OO.png")));
+
 		setBounds(100, 100, 695, 560);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -261,6 +265,7 @@ public class ChatRoom extends JFrame {
 	}
 	protected void closeServer() {
 		try {
+			//首先接收用户连接请求的线程，以拒绝新的用户连接
 			if(serverThread!=null){
 				serverThread.stop();
 			}
