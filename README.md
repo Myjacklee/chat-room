@@ -8,8 +8,8 @@
 
 1. 用户界面
 
-   ![用户界面](E:\图片\mdImage\client.jpg)
+   ![用户界面](src\icon\client.jpg)
 
 2. 服务器界面
 
-   ![服务器界面](E:\图片\mdImage\server.jpg)
+   ![服务器界面](src\icon\server.jpg)
