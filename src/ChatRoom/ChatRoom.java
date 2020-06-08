@@ -243,7 +243,7 @@ public class ChatRoom extends JFrame {
 					button_create_room.setEnabled(true);
 					button_close_room.setEnabled(false);
 					button_send_message.setEnabled(false);
-					textField_PORT.setEditable(true);
+					textField_PORT.setEnabled(true);
 					textPane_message.append("服务器成功停止！\r\n");
 					JOptionPane.showMessageDialog(null, "服务器成功停止！");
 				} catch (Exception e3) {
